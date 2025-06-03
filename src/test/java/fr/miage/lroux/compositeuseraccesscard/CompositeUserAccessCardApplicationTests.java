@@ -1,0 +1,13 @@
+package fr.miage.lroux.compositeuseraccesscard;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class CompositeUserAccessCardApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
