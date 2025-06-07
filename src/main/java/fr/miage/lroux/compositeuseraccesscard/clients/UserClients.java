@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient("userService")
-@Component
+@FeignClient("utilisateur")
 public interface UserClients {
 
     @RequestMapping(method = RequestMethod.GET, value = "/api/user/{id}",produces = "application/json")

@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient("accessCardService")
-@Component
+@FeignClient("accesscard")
 public interface AccessCardClients {
 
     @RequestMapping(method = RequestMethod.GET, value = "/api/accessCard/{id}",produces = "application/json")
