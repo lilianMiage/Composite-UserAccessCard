@@ -7,7 +7,6 @@ import fr.miage.lroux.compositeuseraccesscard.dto.AccessCard;
 import fr.miage.lroux.compositeuseraccesscard.dto.User;
 import fr.miage.lroux.compositeuseraccesscard.dto.UserWithAccessCard;
 import fr.miage.lroux.compositeuseraccesscard.repository.RepoUserAccessCard;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -22,10 +21,10 @@ public class ServiceUserAccessCard implements RepoUserAccessCard {
         this.userClients = userClients;
     }
     @Override
-    public UserWithAccessCard getUserWithAccessCard(long idUser) throws Exception {
+    public UserWithAccessCard getUserWithAccessCard(long userId) throws Exception {
         User user = null;
         try {
-            user = userClients.getUser(idUser);
+            user = userClients.getUser(userId);
         }catch (FeignException.NotFound e){
             throw new Exception();
         }
@@ -35,7 +34,21 @@ public class ServiceUserAccessCard implements RepoUserAccessCard {
     }
 
     @Override
-    public AccessCard createAccessCard(long idUser, AccessCard accessCard) {
-        return null;
+    public AccessCard createAccessCard(long userId, AccessCard accessCard) throws Exception {
+        User user = null;
+
+        try{
+            user = userClients.getUser(userId);
+        }catch (FeignException.NotFound e){
+            throw new Exception();
+        }
+        AccessCard accessCard1 = null;
+        try {
+            accessCard.setUserId(user.getUserId());
+            accessCard1 = accessCardClients.createAccessCard(accessCard);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+        return accessCard1;
     }
 }

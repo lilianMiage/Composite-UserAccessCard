@@ -8,6 +8,16 @@ public class AccessCard implements Serializable {
 
     private String password;
 
+    private long userId;
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
     public void setAccessCardid(long accessCardid) {
         this.accessCardid = accessCardid;
     }
@@ -27,8 +37,9 @@ public class AccessCard implements Serializable {
     public AccessCard() {
     }
 
-    public AccessCard(long accessCardid, String password) {
+    public AccessCard(long accessCardid, String password, long userId) {
         this.accessCardid = accessCardid;
         this.password = password;
+        this.userId = userId;
     }
 }

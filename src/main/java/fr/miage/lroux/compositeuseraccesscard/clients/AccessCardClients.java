@@ -4,12 +4,17 @@ import fr.miage.lroux.compositeuseraccesscard.dto.AccessCard;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient("accesscard")
 public interface AccessCardClients {
 
-    @RequestMapping(method = RequestMethod.GET, value = "/api/accessCard/{id}",produces = "application/json")
-    AccessCard getAccessCard(@PathVariable long id);
+    @RequestMapping(method = RequestMethod.GET, value = "/api/accessCard/user/{userId}", produces = "application/json")
+    AccessCard getAccessCard(@PathVariable long userId);
+
+    @RequestMapping(method = RequestMethod.POST, value = "/api/accessCard/create", consumes = "application/json")
+    AccessCard createAccessCard(@RequestBody AccessCard accessCard);
 }
+
