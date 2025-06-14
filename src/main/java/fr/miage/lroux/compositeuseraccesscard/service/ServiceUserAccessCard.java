@@ -63,6 +63,13 @@ public class ServiceUserAccessCard implements RepoUserAccessCard {
         return accessCardReturn;
     }
 
+    /**
+     * Checks if a user exists by user ID and throws an exception if not found.
+     *
+     * @param userId the ID of the user to check
+     * @return User object if found
+     * @throws Exception if the user does not exist
+     */
     private User checkUserExistOrThrow(long userId) throws Exception {
         try {
             return userClients.getUser(userId);
@@ -71,6 +78,13 @@ public class ServiceUserAccessCard implements RepoUserAccessCard {
         }
     }
 
+    /**
+     * Creates a new access card and throws an exception if the creation fails.
+     *
+     * @param accessCard the AccessCard object to create
+     * @return Created AccessCard object
+     * @throws RuntimeException if the creation fails
+     */
     private AccessCard createAccessCardOrThrow(AccessCard accessCard) {
         try {
             return accessCardClients.createAccessCard(accessCard);
@@ -79,6 +93,13 @@ public class ServiceUserAccessCard implements RepoUserAccessCard {
         }
     }
 
+    /**
+     * Updates the user's access card ID and throws an exception if the update fails.
+     *
+     * @param userId the ID of the user to update
+     * @param accessCardId the new access card ID to set for the user
+     * @throws RuntimeException if the update fails
+     */
     private void updateUserAccessCardIdOrThrow(long userId, long accessCardId) {
         try {
             userClients.updateAccessCardId(userId, accessCardId);
@@ -87,6 +108,13 @@ public class ServiceUserAccessCard implements RepoUserAccessCard {
         }
     }
 
+    /**
+     * Retrieves an access card by user ID and throws an exception if not found.
+     *
+     * @param userId the ID of the user associated with the access card
+     * @return AccessCard object if found
+     * @throws Exception if the access card does not exist for the given user ID
+     */
     private AccessCard getAccessCardByIdOrThrow(long userId) throws Exception {
         try {
             return accessCardClients.getAccessCardByUserId(userId);
