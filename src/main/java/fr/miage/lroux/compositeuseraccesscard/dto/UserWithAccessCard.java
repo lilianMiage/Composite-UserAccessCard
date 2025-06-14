@@ -1,5 +1,10 @@
 package fr.miage.lroux.compositeuseraccesscard.dto;
 
+
+/**
+ * Represents a user with an associated access card.
+ * This class is used to manage users in the composite user access card system.
+ */
 public class UserWithAccessCard extends User{
 
     private AccessCard accessCard;

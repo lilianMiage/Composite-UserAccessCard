@@ -2,6 +2,10 @@ package fr.miage.lroux.compositeuseraccesscard.dto;
 
 import java.io.Serializable;
 
+/**
+ * Represents a user with an ID, last name, and first name.
+ * This class is used to manage user information in the composite user access card system.
+ */
 public class User implements Serializable {
 
     private long userId;
